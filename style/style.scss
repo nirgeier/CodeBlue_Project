@@ -1,0 +1,914 @@
+@import "compass/css3";
+@import "compass/reset";
+@import "compass/css3/user-interface";
+
+* {
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Ropa Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/RopaSans.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Coming Soon';
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/CommingSoon.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url("fonts/CondensedLight.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'CondensedBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/CondensedBold.woff") format('woff');
+}
+
+@-webkit-keyframes blink{
+	0%{ opacity: _1; }
+	50%{ opacity:_0; }
+}
+
+@-moz-keyframes blink{
+	0%{ opacity: _1; }
+	50%{ opacity:_0; }
+}
+
+@-o-keyframes blink{
+	0%{ opacity: _1; }
+	50%{ opacity:_0; }
+}
+
+@keyframes blink{
+	0%{ opacity: _1; }
+	50%{ opacity:_0; }
+}
+
+img {
+  vertical-align: middle;
+}
+
+.add_song {
+  outline: 1px;
+  margin: 5px;
+  outline: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 10px;
+}
+
+.createDB .dialog {
+  width: 500px;
+}
+
+.backoffice .dialog {
+  width: 100%;
+}
+
+.backoffice .dialog img {
+  height: 24px;
+  width: 24px;
+}
+
+.data_table {
+  color: rgba(255, 255, 255, 0.75);
+  padding: 25px 10px;
+  width: 100%;
+}
+
+.data_table tbody tr:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.data_table tbody tr:hover td {
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.data_table td, .data_table th {
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 3px;
+  font-weight: normal;
+}
+
+.data_table td {
+  color: rgba(255, 161, 0, 0.75);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+.data_table th {
+  padding: 5px;
+  text-align: left;
+}
+
+.data_table td:first-child, .data_table th:first-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+
+}
+
+.data_table thead {
+  @include background-image(linear-gradient(bottom, rgba(115, 200, 245, 0.75) 0%, rgba(150, 192, 255, 0.25) 100%));
+  color: black;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 1);
+}
+
+.blink {
+  @include experimental(animation-name, blink);
+  @include experimental(animation-duration, 3s);
+  @include experimental(animation-iteration-count, infinite);
+  @include experimental(animation-direction, normal);
+  @include experimental(animation-timing-function, cubic-bezier(0.42, 0, 0.58, 1.0));
+}
+
+.button {
+  border-radius: .5em;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin: 10px 0 0 0;
+  outline: none;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  vertical-align: baseline;
+  width: 125px;
+  zoom: 1;
+}
+
+.button.disabled, .button.disabled:hover {
+  @include background-image(linear-gradient(left top, rgba(250, 165, 26, 0.5) 0%, rgba(244, 122, 32, 0.5) 100%));
+  border: solid 1px rgba(218, 124, 12, 0.5);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.buttons {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.cssButtons {
+  cursor: pointer;
+}
+
+.cssButtons input[type="checkbox"] + span,
+.cssButtons input[type="radio"] + span {
+  font: normal 13px/14px "Segoe UI", Sans-serif;
+  padding: 0 0 0 5px;
+}
+
+.cssButtons input[type="checkbox"] + span,
+.cssButtons input[type="radio"] + span,
+.cssButtons input[type="checkbox"] + span::before,
+.cssButtons input[type="radio"] + span::before {
+  display: inline-block;
+}
+
+.cssButtons input[type="checkbox"] + span::before {
+  content: "\2714";
+}
+
+.cssButtons input[type="checkbox"] + span::before,
+.cssButtons input[type="radio"] + span::before {
+  background: #0b70cd;
+  border-radius: 3px;
+  @include background-image(linear-gradient(-45deg, #fefefe, #242424));
+  box-shadow: 0 0 1px 1px #ccc;
+  cursor: pointer;
+  font: bold 12px/12px Garamond, "Segoe UI", Sans-serif;
+  height: 12px;
+  margin: -4px 4px 0 0;
+
+  text-indent: -9999px;
+  text-transform: uppercase;
+  width: 12px;
+
+}
+
+.cssButtons input[type="checkbox"],
+.cssButtons input[type="radio"] {
+  @include opacity(0);
+  position: absolute;
+}
+
+.cssButtons input[type="checkbox"]:checked + span::before,
+.cssButtons input[type="radio"]:checked + span::before {
+  color: #fff;
+  text-indent: 2px;
+  text-shadow: 0 0 2px #242424;
+}
+
+.cssButtons input[type="checkbox"]:disabled + span,
+.cssButtons input[type="radio"]:disabled + span,
+.cssButtons input[type="checkbox"]:disabled + span::before,
+.cssButtons input[type="radio"]:disabled + span::before {
+  cursor: default;
+}
+
+.cssButtons input[type="checkbox"]:disabled + span::before,
+.cssButtons input[type="radio"]:disabled + span::before {
+  @include opacity(.5);
+}
+
+.cssButtons input[type="radio"] + span::before {
+  content: "\2022";
+  font-size: 22px;
+  border-radius: 12px;
+}
+
+.cssButtons input[type="radio"]:checked + span::before {
+  text-indent: 2px;
+}
+
+.cssButtons:hover input[type="checkbox"]:not(:disabled) + span::before,
+.cssButtons:hover input[type="radio"]:not(:disabled) + span::before {
+  background: #242424;
+  @include background-image(linear-gradient(45deg, #fefefe, #242424));
+  box-shadow: 0px 0px 1px 2px #ccc;
+}
+
+.highlight {
+  background-color: rgba(192, 192, 192, 0.75);
+  border-radius: 3px;
+  color: #000000;
+  padding: 0 3px;
+}
+
+.dialog {
+  background: rgba(24, 24, 24, 0.5);
+  border-radius: 25px;
+  box-shadow: 0px 0px 5px rgba(24, 24, 24, 1) inset, 2px 2px 25px;
+  display: inline-block;
+  margin: 10px auto;
+  padding: 25px;
+  position: relative;
+  text-align: left;
+  width: 321px;
+
+  h1 img {
+    padding: 0 10px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .label {
+    width: 105px;
+  }
+
+  h1 {
+    background-color: rgba(24, 24, 24, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px 25px 0 0;
+    color: rgb(247, 141, 29);
+    font-size: 32px;
+    line-height: 48px;
+    margin: -25px -25px 15px -25px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  input:focus {
+    background: rgba(24, 24, 24, 0.75);
+  }
+
+  input[type=text],
+  input[type=password] {
+    background: rgba(24, 24, 24, 0.45);
+    border: 1px solid #242424;
+    border-radius: 4px;
+    box-shadow: 0 0 1px #242424 inset;
+    color: #f78d1d;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 15px;
+    margin: 2px 0;
+    padding: 0 0 0 4px;
+    width: 200px;
+  }
+
+  input[type=text].input_error,
+  input[type=password].input_error {
+    background-color: rgba(255, 0, 0, 0.65);
+    color: white;
+  }
+
+  label {
+    display: inline-block;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    vertical-align: top;
+  }
+
+}
+
+.playlistEntry, .playlistSongs {
+  width: 960px;
+
+  iframe {
+    margin: 20px 0 0 0;
+    vertical-align: top;
+    box-shadow: 1px 1px 10px black, -1px -1px 5px black;
+  }
+
+  p {
+    display: inline-block;
+    width: 475px;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  }
+
+  summary {
+    color: rgb(247, 141, 29);
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px black;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .playlist_dropdown {
+    padding: 5px;
+    line-height: 32px;
+    vertical-align: middle;
+
+    label {
+      font-size: 20px;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 1), 2px 2px 1px rgba(0, 0, 0, 1), 3px 3px 1px rgba(0, 0, 0, 1);
+      color: rgba(0, 255, 0, 1);
+    }
+
+  }
+
+  .noPlaylist {
+    margin: 5px 0;
+    padding: 5px;
+    color: #ffdead;
+    outline: 1px solid #ffdead;
+  }
+  select {
+    background: rgba(192, 192, 192, 0.75) top right url('/images/select_down.png') no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0 25px 0 10px;
+    vertical-align: middle;
+    line-height: 16px;
+    height: 28px;
+    border-radius: 13px;
+    width: 150px;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0);
+  }
+
+  select:hover {
+    color: rgba(0, 0, 0, 1);
+  }
+}
+
+.playlistSongs {
+  width: 920px !important;
+  box-shadow: 5px 5px 100px rgb(24, 24, 24) inset !important;
+}
+
+.playlistSongs:hover {
+  box-shadow: 3px 3px 15px silver inset !important;
+}
+
+.dialog.search {
+  height: 120px;
+  border-radius: 25px 0 25px 25px;
+}
+
+.dialog .close {
+  cursor: pointer;
+  position: absolute;
+  right: -9px;
+  top: -9px;
+}
+
+fieldset {
+  padding: 0 5px 7px 5px;
+  border: 1px solid rgba(24, 24, 24, 0.75);
+  border-radius: 10px;
+}
+
+legend {
+  padding: 3px;
+}
+
+.dialogWrapper {
+  -webkit-backface-visibility: hidden;
+
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+
+  opacity: 1;
+  height: 200px;
+
+  @include transform-origin(0px -30px);
+
+  @include transform(scale(1));
+
+  -webkit-transition: -webkit-transform ease-out .35s, all ease-out .4s;
+  -moz-transition: -moz-transform ease-out .35s, all ease-out .4s;
+  -ms-transition: -ms-transform ease-out .35s, all ease-out .4s;
+  -o-transition: -o-transform ease-out .35s, all ease-out .4s;
+  transition: -o-transform ease-out .35s, all ease-out .4s;
+
+}
+
+.dialogWrapper.closed {
+  margin: 0;
+  @include opacity(0);
+  padding: 0;
+  height: 0;
+
+  @include transform(scale(0));
+
+}
+
+.dialog.playlist {
+  height: 120px;
+  border-radius: 25px 0 25px 25px;
+  text-align: center;
+}
+
+.error {
+  background-color: rgb(30, 32, 38);
+  border-radius: 5px;
+  box-shadow: 0 0 25px red;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 10px 0;
+  padding: 3px 0;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 51, 0.25);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.highlight a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.inline_error {
+  color: yellow;
+  font-family: 'Coming Soon', cursive;
+  font-size: 12px;
+  line-height: 12px;
+  margin: 0 0 0 110px;
+  padding: 0 0 2px 0;
+}
+
+.login .buttons {
+  margin: 0 0 0 -22px;
+  text-align: right;
+}
+
+.logo, .admin img {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  vertical-align: top;
+
+}
+
+.logo {
+  background: url("/images/logo_48.png") top center no-repeat;
+}
+
+.admin img {
+  background-size: 100% 100%;
+  @include transition-property(all);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in-out);
+  margin: 0 0 0 50px;
+  cursor: pointer;
+}
+
+.admin img:hover {
+  @include transform(scale(2));
+}
+
+.main {
+  display: table;
+  margin: 0 auto;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: auto;
+  padding: 25px 10px 64px;
+  text-align: center;
+}
+
+.main:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.orange {
+  background: #f78d1d;
+  @include background-image(linear-gradient(top, #faa51a, #f47a20));
+  border: solid 1px #da7c0c;
+  color: rgba(0, 0, 0, 0.85);
+  box-shadow: inset 0 1px 1px white, 0 3px 3px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(24, 24, 24, 0.75) !important;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+
+}
+
+.orange:active {
+  @include background-image(linear-gradient(top, #f47a20, #faa51a));
+  color: #fcd3a5;
+}
+
+.orange:hover {
+  background: #f47c20;
+  @include background-image(linear-gradient(top, #f88e11, #f06015));
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6), 0 -2px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.pageContent {
+  height: auto;
+  margin: 0 auto -64px;
+  min-height: 100%;
+  z-index: 100;
+}
+
+.rangeValue {
+  @include background-image(linear-gradient(left top, #222931, #181D21));
+  border: 1px solid black;
+  border-radius: 18px;
+  box-shadow: inset 0px 1px 1px 0 rgba(255, 255, 255, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  height: 18px;
+  margin: 0 0 0 5px;
+  @include opacity(1);
+  text-align: center;
+  width: 18px;
+}
+
+.required:before {
+  color: red;
+  content: "*";
+  font-weight: bold;
+  line-height: 25px;
+  padding: 0 5px 0 0;
+  vertical-align: middle;
+}
+
+#playlistContent {
+  .data_table tbody tr {
+    @include transition-property(all);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in-out);
+  }
+
+  .data_table tbody tr:hover {
+    @include transform(scale(1.05));
+  }
+
+  .empty {
+    margin: 30px;
+    color: rgba(0, 0, 255, 1);
+    font-size: 36px;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.75);
+    line-height: 36px;
+  }
+}
+
+.searchToggle {
+  color: yellow;
+}
+
+.skew, .skew_small {
+  color: yellow;
+  display: inline-block;
+  font-family: 'Coming Soon', cursive;
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 50px;
+  @include transform(skew(-20deg));
+  text-shadow: -1px 3px 10px rgba(0, 0, 0, 1), 2px 2px 10px rgba(128, 129, 128, 0.75);
+}
+
+.skew_small {
+  font-size: 14px;
+  line-height: 14px;
+  display: block;
+  vertical-align: middle;
+  padding: 10px 0;
+}
+
+.slider {
+  display: inline-block;
+  height: 20px;
+  margin: 1px auto;
+  position: relative;
+  width: 205px;
+}
+
+.slider .bar {
+  background-color: rgb(218, 124, 12);
+  border-radius: 10px;
+  height: 4px;
+  position: relative;
+  top: -2px;
+  width: 175px;
+}
+
+.songsList {
+  text-align: left;
+}
+
+.songsList h1, #songsContent h1 {
+  font-size: 36px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#songsContent h1 {
+  text-align: left;
+}
+
+.spacer:after {
+  @include background-image(linear-gradient(left, rgba(192, 192, 192, 0) 0%, rgba(192, 192, 192, 0.8) 20%, rgba(192, 192, 192, 1) 53%, rgba(192, 192, 192, 0.8) 79%, rgba(192, 192, 192, 0) 100%));
+  content: ' ';
+  display: block;
+  height: 1px;
+  margin: 10px;
+  width: 100%;
+}
+
+.tooltip {
+  background: #FFFBCF;
+  border: 1px solid #EFE795;
+  color: #777;
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  margin-left: -40px;
+  padding: 10px;
+  position: absolute;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.75);
+  z-index: 10;
+  @include background-image(linear-gradient(top, #FFFBCF 0%, #FFFCDF 100%));
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+}
+
+.tooltip span {
+  background: #FFFBCF;
+  border: 0;
+  border-right: 1px solid #EFE795;
+  border-top: 1px solid #EFE795;
+  box-shadow: inset 0 1px 0 #fff;
+  display: none !important;
+  height: 10px;
+  margin-left: 15px;
+  margin-top: -16px;
+  @include transform(rotate(-45deg));
+  position: absolute;
+  width: 10px;
+}
+
+.users .dialog {
+  width: 400px;
+}
+
+.users .dialog {
+  width: 400px;
+}
+
+.users .dialog input[type=text], .users .dialog input[type="password"] {
+  width: 200px;
+}
+
+a {
+  color: #f78d1d;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  background: url("/images/bg_smaller.jpg") bottom right no-repeat;
+  background-attachment: fixed;
+  color: #D8D8D8;
+  height: 100%;
+  line-height: 20px;
+  margin: 0 auto;
+  width: 960px;
+  font-family: "Ropa Sans";
+}
+
+div > .tooltip, li > .tooltip, a > .tooltip, span > .tooltip {
+  margin-left: -65px;
+  margin-top: -10px;
+  @include opacity(0);
+  visibility: hidden;
+  @include transition-property(opacity, margin-top, visibility, margin-left);
+  @include transition-duration(0.5s, 0.3s, 0.5s, 0.3s);
+  @include transition-timing-function(ease-in-out, ease-in-out, ease-in-out, ease-in-out);
+}
+
+div:hover > .tooltip, li:hover > .tooltip, a:hover > .tooltip, span:hover > .tooltip,
+a .tooltip:hover, span .tooltip:hover, li .tooltip:hover, div .tooltip:hover {
+  display: inline;
+  margin-left: -40px;
+  margin-top: 30px;
+  @include opacity(1);
+  overflow: visible;
+  visibility: visible;
+  @include transition-property(opacity, margin-top, visibility, margin-left);
+  @include transition-duration(0.5s, 0.3s, 0.5s, 0.3s);
+  @include transition-timing-function(ease-in-out, ease-in-out, ease-in-out, ease-in-out);
+}
+
+footer, header {
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 -6px black;
+  color: yellow;
+  font-family: Tahoma;
+  font-size: 13px;
+  height: 48px;
+  outline: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  position: relative;
+  width: 960px;
+  z-index: 100;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+}
+
+header {
+
+  .menuNav {
+    display: inline-block;
+    line-height: 48px;
+    list-style: none;
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    vertical-align: middle;
+
+    li {
+      display: inline-block;
+      line-height: 32px;
+      border-radius: 7px;
+      color: #000000;
+      padding: 3px 7px;
+      @include transition-property(all);
+      @include transition-duration(0.2s);
+      @include transition-timing-function(ease-in-out);
+      margin: 0 15px;
+    }
+
+    li img {
+      height: 48px;
+    }
+
+    li.spacer {
+      width: 3px;
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    li.user, li.user:hover {
+      border-radius: 15px;
+      @include transform(scale(1));
+      color: silver;
+      font-size: 14px;
+    }
+    li.user img {
+      border-radius: 15px;
+    }
+
+    li:hover {
+      @include transform(scale(1.5));
+      box-shadow: 1px 1px 50px rgba(0, 0, 0, 1);
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    li a {
+      color: rgba(255, 255, 0, 0.9)
+    }
+
+    li:hover a {
+      text-decoration: none;
+    }
+  }
+
+}
+
+footer {
+  clear: both;
+  line-height: 48px;
+  position: relative;
+  margin-top: -68px;
+}
+
+html {
+  font-family: 'Ropa Sans', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+input[type="range"] {
+  background-color: black;
+  height: 2px;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-slider-thumb {
+  @include background-image(linear-gradient(left top, #ebf1f6 0%, #abd3ee 50%, #89c3eb 51%, #d5ebfb 100%));
+  border-radius: 40px;
+  box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  height: 13px;
+  position: relative;
+  top: -1px;
+  -webkit-appearance: none !important;
+  width: 13px;
+  z-index: 1;
+}
+
+/** CSS loader **/
+.animate > span {
+  width: 100%;
+}
+
+.animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent), to(transparent));
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+  z-index: 1;
+  -webkit-background-size: 50px 50px;
+  -moz-background-size: 50px 50px;
+  background-size: 50px 50px;
+  -webkit-animation: move 1s linear infinite;
+  -moz-animation: move 1s linear infinite;
+  -webkit-border-top-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes move {
+  0% { background-position: 0 0;}
+  100% {background-position: 50px 50px; }
+}
+
+@-moz-keyframes move {
+  0% { background-position: 0 0;}
+  100% { background-position: 50px 50px; }
+}
+
+
